@@ -7,3 +7,5 @@ def solution(a, b):
     date += b
 
     return days[(date+4)%7]
+
+print(solution(3, 31))
