@@ -1,17 +1,19 @@
+import heapq
 def solution(scoville, K):
-    cnt = -1
-    min_ = min(scoville)
-    while min(scoville)<K:
+    cnt = 0
+    heapq.heapify(scoville)
 
-        a = scoville.pop(0)
-        b = scoville.pop(0)
-        scoville.insert(0, a + b*2)
+    while scoville[0]<K and len(scoville)>=2:
+
+        a = heapq.heappop(scoville)
+        b = heapq.heappop(scoville)
+
+        heapq.heappush(scoville, a+b*2)
         cnt+=1
 
+    if scoville[0]>=K:
+        return cnt
+    else: return -1
 
-    return cnt
+print(solution([1,1,1,8], 7))
 
-
-
-
-print(solution([1,2,3,9,10,12], 7))
