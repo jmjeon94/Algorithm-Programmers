@@ -1,13 +1,12 @@
 def solution(numbers):
-    print(numbers)
     answer = []
     for n in numbers:
         if n%2==0:
             answer.append(n+1)
         else:
-            b = list('0' + bin(n)[2:])
+            b = list('0' + bin(int(n))[2:])
             i_zero = b[::-1].index('0')
-            b[len(b) - i_zero - 1] = '1'
+            b[len(b) - i_zero -1] = '1'
             b[len(b) - i_zero] = '0'
             answer.append(int('0b'+''.join(b), 2))
 
