@@ -10,4 +10,4 @@ def solution(n, works):
     answer = sum([x**2 for x in works])
     return answer
 
-print(solution(4, [4,3,3]))
+print(solution(4, [4,3,3])) # 12
