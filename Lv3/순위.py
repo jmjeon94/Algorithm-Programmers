@@ -29,5 +29,27 @@ def solution(n, results):
         answer += m.count(0)==2
     return answer
 
+def solution2(n, results):
+    mat = [[0 for _ in range(n+1)] for _ in range(n+1)]
+
+    for a, b in results:
+        mat[a][b] = 1
+        mat[b][a] = -1
+
+    for k in range(1, n+1):
+        for a in range(1, n+1):
+            for b in range(1, n+1):
+                if mat[a][b]==0:
+                    if mat[a][k] + mat[k][b]==2:
+                        mat[a][b] = 1
+                    if mat[a][k] + mat[k][b]==-2:
+                        mat[a][b] = -1
+
+    answer = 0
+    for m in mat:
+        print(m)
+        answer += m.count(0)==2
+    return answer
+
 print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
 
